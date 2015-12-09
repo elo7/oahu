@@ -26,7 +26,12 @@ public struct Oahu {
         }
 
         let request = NSMutableURLRequest(URL: url)
+        cookiesIfNeeded(forRequest: request)
 
+        wkWebView.loadRequest(request)
+    }
+
+    func cookiesIfNeeded(forRequest request: NSMutableURLRequest) {
         guard let requestURL = request.URL,
             let validDomain = requestURL.host,
             let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies else { return }
@@ -36,7 +41,8 @@ public struct Oahu {
             .map {"\($0.name)=\($0.value)"}
             .joinWithSeparator(";")
 
-        request.setValue(header, forHTTPHeaderField: "Cookie")
-        wkWebView.loadRequest(request)
+        if header != "" {
+            request.setValue(header, forHTTPHeaderField: "Cookie")
+        }
     }
 }
