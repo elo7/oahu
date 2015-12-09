@@ -1,16 +1,16 @@
 import Foundation
 import WebKit
 
-struct Oahu {
+public struct Oahu {
     private var wkWebView: WKWebView!
 
-    weak var navigationDelegate: WKNavigationDelegate? {
+    public weak var navigationDelegate: WKNavigationDelegate? {
         didSet {
             wkWebView.navigationDelegate = navigationDelegate
         }
     }
 
-    init(forView view: UIView, allowsBackForwardNavigationGestures: Bool) {
+    public init(forView view: UIView, allowsBackForwardNavigationGestures: Bool) {
         let webViewConfiguration = Configuration()
 
         wkWebView = WKWebView(frame: view.frame, configuration: webViewConfiguration.config)
@@ -20,7 +20,7 @@ struct Oahu {
         view.addSubview(wkWebView)
     }
 
-    func loadRequest(url: String) {
+    public func loadRequest(url: String) {
         guard let url = NSURL(string: url) else {
             return
         }
