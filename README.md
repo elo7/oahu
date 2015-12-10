@@ -34,7 +34,6 @@ $(SRCROOT)/Carthage/Build/iOS/oahu.framework
 	import oahu
 	let browser = Oahu(forView: view, allowsBackForwardNavigationGestures: true)
 	browser.loadRequest("http://www.elo7.com")
-	
 ```
 
 #### Delegate methods
@@ -42,14 +41,12 @@ Oahu responds to all WKNavigationDelegate methods
 
 ```
 	class ViewController: UIViewController, WKNavigationDelegate
-	
 ```
 
 And then
 
 ```
 	browser.navigationDelegate = self
-	
 ```
 
 ## Contritute
