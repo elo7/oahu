@@ -12,7 +12,7 @@ Embedded frameworks require a minimum deployment target of iOS 8 or OS X Maveric
 
 ### CocoaPods
 ```
-user_frameworks! 
+use_frameworks! 
 
 pod 'oahu', :git => 'git@github.com:elo7/oahu.git'
 ```
