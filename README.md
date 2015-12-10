@@ -3,12 +3,10 @@
 *Swift lightweight wrapper for WKWebView to maintain persisted cookies trough navigation*
 
 ## Requirements
----
 - iOS 8+
 - Xcode 7.1+
 
 ## Instalation
----
 Embedded frameworks require a minimum deployment target of iOS 8 or OS X Mavericks (10.9).
 
 
@@ -31,7 +29,6 @@ $(SRCROOT)/Carthage/Build/iOS/oahu.framework
 ```
 
 ## Getting started
----
 #### Initialization
 ```
 	import oahu
@@ -56,12 +53,10 @@ And then
 ```
 
 ## Contritute
----
 - If you **found a bug**, open an issue.
 - If you ***have a feature request***, open an issue.
 - If you ***want to contribute***, submit a pull request
 
 
 ## License
----
 Oahu is released under the MIT license. See LICENSE for details.
