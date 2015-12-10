@@ -30,23 +30,23 @@ $(SRCROOT)/Carthage/Build/iOS/oahu.framework
 
 ## Getting started
 #### Initialization
-```
-	import oahu
-	let browser = Oahu(forView: view, allowsBackForwardNavigationGestures: true)
-	browser.loadRequest("http://www.elo7.com")
+```swift
+import oahu
+let browser = Oahu(forView: view, allowsBackForwardNavigationGestures: true)
+browser.loadRequest("http://www.elo7.com")
 ```
 
 #### Delegate methods
 Oahu responds to all WKNavigationDelegate methods
 
-```
-	class ViewController: UIViewController, WKNavigationDelegate
+```swift
+class ViewController: UIViewController, WKNavigationDelegate
 ```
 
 And then
 
-```
-	browser.navigationDelegate = self
+```swift
+browser.navigationDelegate = self
 ```
 
 ## Contritute
