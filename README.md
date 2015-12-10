@@ -1,6 +1,6 @@
 #Oahu
 
-*Swift lightweight wrapper for WKWebView to maintain persisted cookies trough navigation*
+*Swift lightweight wrapper for WKWebView to maintain persisted cookies through navigation*
 
 ## Requirements
 - iOS 8+
@@ -49,7 +49,7 @@ And then
 browser.navigationDelegate = self
 ```
 
-## Contritute
+## Contribute
 - If you **found a bug**, open an issue.
 - If you ***have a feature request***, open an issue.
 - If you ***want to contribute***, submit a pull request
