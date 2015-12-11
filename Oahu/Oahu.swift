@@ -1,7 +1,7 @@
 import Foundation
 import WebKit
 
-public struct Oahu {
+public class Oahu: NSObject {
     private var wkWebView: WKWebView!
 
     public weak var navigationDelegate: WKNavigationDelegate? {
