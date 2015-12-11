@@ -19,7 +19,7 @@ pod 'oahu', :git => 'git@github.com:elo7/oahu.git'
 
 ### Carthage
 ```ruby
-github "elo7/oahu" ~> 0.0.1
+github "elo7/oahu" "master"
 ```
 
 And add the path to the framework under “Input Files”, e.g.:
