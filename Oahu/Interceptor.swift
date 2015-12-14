@@ -27,8 +27,12 @@ public class Interceptor: NSObject {
         self.evaluators.append(evaluator)
     }
 
-    public func remove(evaluator evaluator: Evaluator) {
-        self.remove(evaluator: evaluator)
+    public func removeEvaluatorForUrl(url url: String) {
+        self.evaluators = self.evaluators.filter{!url.containsString($0.url)}
+    }
+
+    func getEvaluators() -> [Evaluator] {
+        return self.evaluators
     }
 
     public func executeFirst(url: String) -> Bool {

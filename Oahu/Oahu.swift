@@ -57,8 +57,4 @@ public class Oahu: NSObject, WKNavigationDelegate {
 
         decisionHandler(.Allow)
     }
-
-    public func webView(webView: WKWebView, didCommitNavigation navigation: WKNavigation!) {
-        print("acabou o request")
-    }
 }
