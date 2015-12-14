@@ -46,8 +46,6 @@ public class Oahu: NSObject, WKNavigationDelegate {
     }
 
     public func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
-        print("url:\(navigationAction.request.URL?.absoluteString)")
-
         if let interceptor = self.interceptor, let url = navigationAction.request.URL?.absoluteString {
             if interceptor.executeFirst(url) {
                 decisionHandler(.Cancel)
