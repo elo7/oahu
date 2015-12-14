@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B00B8011C1EFCEB00A9678D /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B00B8001C1EFCEB00A9678D /* Interceptor.swift */; };
 		8B8A7EC01C18BEB2003466D6 /* Oahu.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8A7EBF1C18BEB2003466D6 /* Oahu.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B8A7EC71C18BEB2003466D6 /* Oahu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8A7EBC1C18BEB2003466D6 /* Oahu.framework */; };
 		8B8A7ECC1C18BEB2003466D6 /* OahuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8A7ECB1C18BEB2003466D6 /* OahuTests.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B00B8001C1EFCEB00A9678D /* Interceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interceptor.swift; sourceTree = "<group>"; };
 		8B8A7EBC1C18BEB2003466D6 /* Oahu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Oahu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B8A7EBF1C18BEB2003466D6 /* Oahu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Oahu.h; sourceTree = "<group>"; };
 		8B8A7EC11C18BEB2003466D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				8B8A7ED91C18BFDC003466D6 /* Oahu.swift */,
 				8B8A7EDA1C18BFDC003466D6 /* ScriptHandler.swift */,
 				8B8A7EE01C18BFE2003466D6 /* Extensions */,
+				8B00B8001C1EFCEB00A9678D /* Interceptor.swift */,
 			);
 			path = Oahu;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B8A7EDF1C18BFDC003466D6 /* ScriptHandler.swift in Sources */,
+				8B00B8011C1EFCEB00A9678D /* Interceptor.swift in Sources */,
 				8B8A7EDB1C18BFDC003466D6 /* Configuration.swift in Sources */,
 				8B8A7EDD1C18BFDC003466D6 /* ExtNSHTTPCookie.swift in Sources */,
 				8B8A7EDE1C18BFDC003466D6 /* Oahu.swift in Sources */,
