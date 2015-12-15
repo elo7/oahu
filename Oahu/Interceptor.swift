@@ -3,7 +3,7 @@ import Foundation
 public protocol Evaluator {
     var closure: () -> Void {get}
     var url: String {get}
-    init(closure: () -> Void, url: String)
+    init(url: String, closure: () -> Void)
 }
 
 extension Evaluator {

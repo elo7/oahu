@@ -7,9 +7,9 @@ class InterceptorTests: XCTestCase {
 
     override func setUp() {
         interceptor = Interceptor(evaluators: [
-            OahuEvaluator(closure: {}, url: "www.bing.com"),
-            OahuEvaluator(closure: {}, url: "www.google.com"),
-            OahuEvaluator(closure: {}, url: "www.yahoo.com")
+            OahuEvaluator(url: "www.bing.com"){},
+            OahuEvaluator(url: "www.google.com"){},
+            OahuEvaluator(url: "www.yahoo.com"){}
             ])
     }
 
@@ -21,11 +21,11 @@ class InterceptorTests: XCTestCase {
     }
 
     func testShouldRemoveAllBingEvaluators() {
-        interceptor.add(evaluator: OahuEvaluator(closure: {}, url: "www.bing.com"))
+        interceptor.add(evaluator: OahuEvaluator(url: "www.bing.com"){})
         XCTAssertTrue(interceptor.getEvaluators().count == 4)
+
         interceptor.removeEvaluatorForUrl(url: "www.bing.com")
         XCTAssertTrue(interceptor.getEvaluators().count == 2)
-
         XCTAssertFalse(interceptor.executeFirst("http://www.bing.com"))
     }
 
@@ -39,7 +39,7 @@ class InterceptorTests: XCTestCase {
         let interceptor = Interceptor(evaluators: [])
         XCTAssertTrue(interceptor.getEvaluators().count == 0)
 
-        interceptor.add(evaluator: OahuEvaluator(closure: {}, url: "www.google.com"))
+        interceptor.add(evaluator: OahuEvaluator(url: "www.google.com"){})
         XCTAssertTrue(interceptor.getEvaluators().count == 1)
     }
 
