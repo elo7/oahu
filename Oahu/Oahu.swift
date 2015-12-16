@@ -9,7 +9,7 @@ public class Oahu: NSObject, WKNavigationDelegate {
         let webViewConfiguration = Configuration()
 
         wkWebView = WKWebView(frame: view.frame, configuration: webViewConfiguration.config)
-        webViewConfiguration.scriptMessageHandler = ScriptHandler(wkWebView: wkWebView)
+
         self.interceptor = interceptor
 
         wkWebView.allowsBackForwardNavigationGestures = allowsBackForwardNavigationGestures
@@ -31,12 +31,11 @@ public class Oahu: NSObject, WKNavigationDelegate {
     }
 
     func cookiesIfNeeded(forRequest request: NSMutableURLRequest) {
-        guard let requestURL = request.URL,
-            let validDomain = requestURL.host,
-            let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies else { return }
+
+        guard let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies else { return }
 
         let header = cookies
-            .filter {!$0.name.containsString("'") && $0.domain.hasSuffix(validDomain)}
+            .filter {!$0.name.containsString("'")}
             .map {"\($0.name)=\($0.value)"}
             .joinWithSeparator(";")
 
@@ -46,13 +45,14 @@ public class Oahu: NSObject, WKNavigationDelegate {
     }
 
     public func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
+
         if let interceptor = self.interceptor, let url = navigationAction.request.URL?.absoluteString {
             if interceptor.executeFirst(url) {
                 decisionHandler(.Cancel)
                 return
             }
         }
-
+        
         decisionHandler(.Allow)
     }
 }
