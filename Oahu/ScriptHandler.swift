@@ -16,12 +16,14 @@ class ScriptHandler: NSObject, WKScriptMessageHandler {
 
             guard let host = message.webView?.URL?.host else { return }
 
-            if let newCookie = NSHTTPCookie(properties: [NSHTTPCookieDomain: host,
+            if let newCookie = NSHTTPCookie(properties:[
+                NSHTTPCookieDomain: host,
                 NSHTTPCookiePath: "/",
                 NSHTTPCookieName: cookieComponents[0],
                 NSHTTPCookieValue: cookieComponents[1],
                 NSHTTPCookieVersion: "0",
-                NSHTTPCookieExpires: String(NSDate().dateByAddingTimeInterval(60*60*24*365))]) { NSHTTPCookieStorage.sharedHTTPCookieStorage().setCookie(newCookie) }
+                NSHTTPCookieExpires: String(NSDate().dateByAddingTimeInterval(60*60*24*365))
+                ]) { NSHTTPCookieStorage.sharedHTTPCookieStorage().setCookie(newCookie) }
         }
     }
 }
