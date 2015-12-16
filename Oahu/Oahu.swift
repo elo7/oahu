@@ -52,7 +52,7 @@ public class Oahu: NSObject, WKNavigationDelegate {
                 return
             }
         }
-        
+
         decisionHandler(.Allow)
     }
 }
