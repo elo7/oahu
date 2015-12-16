@@ -92,11 +92,11 @@
 				8B8A7EBF1C18BEB2003466D6 /* Oahu.h */,
 				8B8A7EC11C18BEB2003466D6 /* Info.plist */,
 				8B8A7ED61C18BFDC003466D6 /* Configuration.swift */,
-				8B8A7ED91C18BFDC003466D6 /* Oahu.swift */,
-				8B8A7EDA1C18BFDC003466D6 /* ScriptHandler.swift */,
-				8B00B8041C1F25E800A9678D /* OahuEvaluator.swift */,
-				8B8A7EE01C18BFE2003466D6 /* Extensions */,
 				8B00B8001C1EFCEB00A9678D /* Interceptor.swift */,
+				8B8A7ED91C18BFDC003466D6 /* Oahu.swift */,
+				8B00B8041C1F25E800A9678D /* OahuEvaluator.swift */,
+				8B8A7EDA1C18BFDC003466D6 /* ScriptHandler.swift */,
+				8B8A7EE01C18BFE2003466D6 /* Extensions */,
 			);
 			path = Oahu;
 			sourceTree = "<group>";
@@ -104,10 +104,10 @@
 		8B8A7ECA1C18BEB2003466D6 /* OahuTests */ = {
 			isa = PBXGroup;
 			children = (
-				8B8A7ECB1C18BEB2003466D6 /* OahuTests.swift */,
 				8B8A7ECD1C18BEB2003466D6 /* Info.plist */,
 				8B00B8061C1F261800A9678D /* EvaluatorTests.swift */,
 				8BAA8BAA1C1F2A5400AE0755 /* InterceptorTests.swift */,
+				8B8A7ECB1C18BEB2003466D6 /* OahuTests.swift */,
 			);
 			path = OahuTests;
 			sourceTree = "<group>";
