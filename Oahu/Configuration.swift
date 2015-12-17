@@ -2,9 +2,22 @@ import Foundation
 import WebKit
 
 class Configuration {
-    let webkitUserContentController = WKUserContentController()
-    let scriptHandler = ScriptHandler()
-    let processPool = WKProcessPool()
+    private let webkitUserContentController = WKUserContentController()
+    private let scriptHandler = ScriptHandler()
+    private let processPool = WKProcessPool()
+
+    var messagesHandler: [MessageHandler]? {
+        didSet {
+            guard let unwrappedMessagesHandler = messagesHandler else {
+                return
+            }
+
+            for messageHandler in unwrappedMessagesHandler {
+                webkitUserContentController.addScriptMessageHandler(scriptHandler, name: messageHandler.name)
+            }
+        }
+    }
+
 
     lazy var cookieInScript: WKUserScript = {
         let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies!

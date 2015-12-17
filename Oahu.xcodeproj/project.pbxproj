@@ -12,6 +12,7 @@
 		8B00B8071C1F261800A9678D /* EvaluatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B00B8061C1F261800A9678D /* EvaluatorTests.swift */; };
 		8B4CB3641C2072F5005D95A7 /* OahuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4CB3631C2072F5005D95A7 /* OahuDelegate.swift */; };
 		8B4CB3661C207332005D95A7 /* ExtOahu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4CB3651C207332005D95A7 /* ExtOahu.swift */; };
+		8B2F35E71C233E4200C5BBE2 /* MessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2F35E61C233E4200C5BBE2 /* MessageHandler.swift */; };
 		8B8A7EC01C18BEB2003466D6 /* Oahu.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8A7EBF1C18BEB2003466D6 /* Oahu.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B8A7EC71C18BEB2003466D6 /* Oahu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8A7EBC1C18BEB2003466D6 /* Oahu.framework */; };
 		8B8A7EDB1C18BFDC003466D6 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8A7ED61C18BFDC003466D6 /* Configuration.swift */; };
@@ -38,6 +39,7 @@
 		8B00B8061C1F261800A9678D /* EvaluatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvaluatorTests.swift; sourceTree = "<group>"; };
 		8B4CB3631C2072F5005D95A7 /* OahuDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OahuDelegate.swift; sourceTree = "<group>"; };
 		8B4CB3651C207332005D95A7 /* ExtOahu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtOahu.swift; sourceTree = "<group>"; };
+		8B2F35E61C233E4200C5BBE2 /* MessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageHandler.swift; sourceTree = "<group>"; };
 		8B8A7EBC1C18BEB2003466D6 /* Oahu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Oahu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B8A7EBF1C18BEB2003466D6 /* Oahu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Oahu.h; sourceTree = "<group>"; };
 		8B8A7EC11C18BEB2003466D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				8B8A7EBF1C18BEB2003466D6 /* Oahu.h */,
 				8B8A7EC11C18BEB2003466D6 /* Info.plist */,
 				8B8A7ED61C18BFDC003466D6 /* Configuration.swift */,
+				8B2F35E61C233E4200C5BBE2 /* MessageHandler.swift */,
 				8B00B8001C1EFCEB00A9678D /* Interceptor.swift */,
 				8B8A7ED91C18BFDC003466D6 /* Oahu.swift */,
 				8B4CB3631C2072F5005D95A7 /* OahuDelegate.swift */,
@@ -232,6 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B2F35E71C233E4200C5BBE2 /* MessageHandler.swift in Sources */,
 				8B8A7EDF1C18BFDC003466D6 /* ScriptHandler.swift in Sources */,
 				8B00B8011C1EFCEB00A9678D /* Interceptor.swift in Sources */,
 				8B8A7EDB1C18BFDC003466D6 /* Configuration.swift in Sources */,

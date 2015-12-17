@@ -3,6 +3,14 @@ import WebKit
 
 class ScriptHandler: NSObject, WKScriptMessageHandler {
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
+
+        switch message.name {
+        case "updateCookies":
+            print("xablau")
+        default:
+            print("bla")
+        }
+
         let stringCookies = message.body.componentsSeparatedByString("; ")
 
         for stringCookie in stringCookies where stringCookie.componentsSeparatedByString("=").count >= 2 {
