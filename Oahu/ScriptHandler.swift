@@ -2,29 +2,28 @@ import Foundation
 import WebKit
 
 class ScriptHandler: NSObject, WKScriptMessageHandler {
-
-    private weak var wkWebView: WKWebView?
-
-    init(wkWebView:WKWebView) {
-        self.wkWebView = wkWebView
-    }
-
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
-        guard let wkWebViewURL = wkWebView?.URL,
-            let cookiesForURL = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookiesForURL(wkWebViewURL) else {return}
+        let stringCookies = message.body.componentsSeparatedByString("; ")
 
-        for cookie in message.body.componentsSeparatedByString("; ") where cookie.componentsSeparatedByString("=").count >= 2 {
-            let cookieComponents = cookie.componentsSeparatedByString("=")
-            for cookieForURL in cookiesForURL where cookieForURL.name == cookie.componentsSeparatedByString("=")[0] {
-                guard var properties = cookieForURL.properties, let cookieValue = cookieComponents[safe: 1] else { return }
+        for stringCookie in stringCookies where stringCookie.componentsSeparatedByString("=").count >= 2 {
+            let cookieComponents = stringCookie.componentsSeparatedByString("=")
 
-                if cookieValue != cookieForURL.value {
-                    properties[NSHTTPCookieValue] = cookieValue
-
-                    guard let updatedCookie = NSHTTPCookie(properties: properties) else { return }
-                    NSHTTPCookieStorage.sharedHTTPCookieStorage().setCookie(updatedCookie)
+            if let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies {
+                for storedCookie in cookies where storedCookie.name == cookieComponents[0] {
+                    NSHTTPCookieStorage.sharedHTTPCookieStorage().deleteCookie(storedCookie)
                 }
             }
+
+            guard let host = message.webView?.URL?.host else { return }
+
+            if let newCookie = NSHTTPCookie(properties:[
+                NSHTTPCookieDomain: host,
+                NSHTTPCookiePath: "/",
+                NSHTTPCookieName: cookieComponents[0],
+                NSHTTPCookieValue: cookieComponents[1],
+                NSHTTPCookieVersion: "0",
+                NSHTTPCookieExpires: String(NSDate().dateByAddingTimeInterval(60*60*24*365))
+                ]) { NSHTTPCookieStorage.sharedHTTPCookieStorage().setCookie(newCookie) }
         }
     }
 }

@@ -3,12 +3,8 @@ import WebKit
 
 class Configuration {
     let webkitUserContentController = WKUserContentController()
-
-    var scriptMessageHandler: ScriptHandler? {
-        didSet {
-            webkitUserContentController.addScriptMessageHandler(scriptMessageHandler!, name: "updateCookies")
-        }
-    }
+    let scriptHandler = ScriptHandler()
+    let processPool = WKProcessPool()
 
     lazy var cookieInScript: WKUserScript = {
         let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies!
@@ -30,8 +26,9 @@ class Configuration {
         let webkitWebViewConfiguration = WKWebViewConfiguration()
         webkitUserContentController.addUserScript(cookieInScript)
         webkitUserContentController.addUserScript(cookieOutScript)
+        webkitUserContentController.addScriptMessageHandler(scriptHandler, name: "updateCookies")
 
-        webkitWebViewConfiguration.processPool = WKProcessPool()
+        webkitWebViewConfiguration.processPool = processPool
         webkitWebViewConfiguration.userContentController = webkitUserContentController
 
         return webkitWebViewConfiguration
