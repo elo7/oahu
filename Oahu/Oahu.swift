@@ -6,7 +6,7 @@ public class Oahu: NSObject {
     private(set) var interceptor: Interceptor?
     public weak var oahuDelegate: OahuDelegate?
 
-    public init(forView view: UIView, allowsBackForwardNavigationGestures: Bool, interceptor: Interceptor?) {
+    public init(forView view: UIView, allowsBackForwardNavigationGestures: Bool, interceptor: Interceptor? = nil) {
         let webViewConfiguration = Configuration()
 
         wkWebView = WKWebView(frame: view.frame, configuration: webViewConfiguration.config)
