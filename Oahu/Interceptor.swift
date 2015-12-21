@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol Evaluator {
+@objc public protocol Evaluator {
     var closure: () -> Void {get}
     var url: String {get}
     init(url: String, closure: () -> Void)
