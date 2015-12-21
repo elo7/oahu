@@ -14,7 +14,7 @@ Embedded frameworks require a minimum deployment target of iOS 8 or OS X Maveric
 ```ruby
 use_frameworks! 
 
-pod 'oahu', :git => 'git@github.com:elo7/oahu.git'
+pod 'Oahu', :git => 'git@github.com:elo7/oahu.git'
 ```
 
 ### Carthage
