@@ -44,7 +44,7 @@ class Configuration {
 
         webkitWebViewConfiguration.processPool = processPool
         webkitWebViewConfiguration.userContentController = webkitUserContentController
-        
+
         return webkitWebViewConfiguration
     }
 }
