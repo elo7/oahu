@@ -1,15 +1,8 @@
 import Foundation
 import WebKit
 
-class ScriptHandler: NSObject, WKScriptMessageHandler {
+class CookieHandler: NSObject, WKScriptMessageHandler {
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
-
-        switch message.name {
-        case "updateCookies":
-            print("xablau")
-        default:
-            print("bla")
-        }
 
         let stringCookies = message.body.componentsSeparatedByString("; ")
 
