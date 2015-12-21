@@ -1,8 +1,9 @@
 import Foundation
 import WebKit
 
-class ScriptHandler: NSObject, WKScriptMessageHandler {
+class CookieHandler: NSObject, WKScriptMessageHandler {
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
+
         let stringCookies = message.body.componentsSeparatedByString("; ")
 
         for stringCookie in stringCookies where stringCookie.componentsSeparatedByString("=").count >= 2 {

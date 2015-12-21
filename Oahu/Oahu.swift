@@ -5,10 +5,15 @@ public class Oahu: NSObject {
     private var wkWebView: WKWebView!
     private(set) var interceptor: Interceptor?
     public weak var oahuDelegate: OahuDelegate?
+    private let webViewConfiguration = Configuration()
+    
+    public var javaScriptHandlers:[ScriptMessageHandler]? {
+        didSet {
+            webViewConfiguration.messageHandlers = javaScriptHandlers
+        }
+    }
 
-    public init(forView view: UIView, allowsBackForwardNavigationGestures: Bool, interceptor: Interceptor?) {
-        let webViewConfiguration = Configuration()
-
+    public init(forView view: UIView, allowsBackForwardNavigationGestures: Bool, interceptor: Interceptor? = nil) {
         wkWebView = WKWebView(frame: view.frame, configuration: webViewConfiguration.config)
 
         self.interceptor = interceptor
@@ -29,6 +34,10 @@ public class Oahu: NSObject {
         cookiesIfNeeded(forRequest: request)
 
         wkWebView.loadRequest(request)
+    }
+
+    public func loadHTMLString(htmlString: String) {
+        wkWebView.loadHTMLString(htmlString, baseURL: nil)
     }
 
     func cookiesIfNeeded(forRequest request: NSMutableURLRequest) {

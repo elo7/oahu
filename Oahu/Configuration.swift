@@ -2,9 +2,23 @@ import Foundation
 import WebKit
 
 class Configuration {
-    let webkitUserContentController = WKUserContentController()
-    let scriptHandler = ScriptHandler()
-    let processPool = WKProcessPool()
+    private let webkitUserContentController = WKUserContentController()
+    private let cookieHandler = CookieHandler()
+    private let processPool = WKProcessPool()
+
+    var messageHandlers: [ScriptMessageHandler]? {
+        set(newValue) {
+            if let messageHandlers = newValue {
+                let javaScriptHandler = JavaScriptHandler(messageHandlers: messageHandlers)
+                for messageHandler in messageHandlers {
+                    webkitUserContentController.addScriptMessageHandler(javaScriptHandler, name: messageHandler.name)
+                }
+            }
+        }
+        get {
+            return self.messageHandlers
+        }
+    }
 
     lazy var cookieInScript: WKUserScript = {
         let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies!
@@ -26,7 +40,7 @@ class Configuration {
         let webkitWebViewConfiguration = WKWebViewConfiguration()
         webkitUserContentController.addUserScript(cookieInScript)
         webkitUserContentController.addUserScript(cookieOutScript)
-        webkitUserContentController.addScriptMessageHandler(scriptHandler, name: "updateCookies")
+        webkitUserContentController.addScriptMessageHandler(cookieHandler, name: "updateCookies")
 
         webkitWebViewConfiguration.processPool = processPool
         webkitWebViewConfiguration.userContentController = webkitUserContentController
