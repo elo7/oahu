@@ -23,6 +23,7 @@ public class Oahu: NSObject {
 
         super.init()
         wkWebView.navigationDelegate = self
+        wkWebView.UIDelegate = AlertJSDelegate()
     }
 
     public func loadRequest(url: String) {
