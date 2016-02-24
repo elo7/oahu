@@ -4,7 +4,7 @@ import WebKit
 class AlertJSDelegate: NSObject, WKUIDelegate {
     let rootViewController: UIViewController
 
-    init?(rootViewController: UIViewController?) {
+    init(rootViewController: UIViewController) {
         self.rootViewController = rootViewController
     }
 
