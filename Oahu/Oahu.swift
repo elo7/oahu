@@ -6,7 +6,8 @@ public class Oahu: NSObject {
     private(set) var interceptor: Interceptor?
     public weak var oahuDelegate: OahuDelegate?
     private let webViewConfiguration = Configuration()
-    
+    private var delegate: AlertJSDelegate?
+
     public var javaScriptHandlers:[ScriptMessageHandler]? {
         didSet {
             webViewConfiguration.messageHandlers = javaScriptHandlers
@@ -24,7 +25,8 @@ public class Oahu: NSObject {
         super.init()
         wkWebView.navigationDelegate = self
         if let viewController = viewController {
-            wkWebView.UIDelegate = AlertJSDelegate(rootViewController: viewController)
+            self.delegate = AlertJSDelegate(rootViewController: viewController)
+            wkWebView.UIDelegate = self.delegate
         }
     }
 

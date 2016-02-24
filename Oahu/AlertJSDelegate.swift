@@ -25,7 +25,7 @@ struct AlertJS {
     func presentAlertOnController(parentController: UIViewController, title: String, message: String, handler: () -> ()) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
 
-        alert.addAction(UIAlertAction(title: title, style: UIAlertActionStyle.Cancel, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: { (action) -> Void in
             handler()
         }))
 
@@ -35,11 +35,11 @@ struct AlertJS {
     func presentConfirmOnController(parentController: UIViewController, title: String, message: String, handler: (Bool) -> ()) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
 
-        alert.addAction(UIAlertAction(title: title, style: UIAlertActionStyle.Cancel, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
             handler(true)
         }))
 
-        alert.addAction(UIAlertAction(title: title, style: UIAlertActionStyle.Cancel, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { (action) -> Void in
             handler(false)
         }))
 
