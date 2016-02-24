@@ -4,24 +4,24 @@ import WebKit
 class AlertJSDelegate: NSObject, WKUIDelegate {
     let rootViewController: UIViewController
 
-    init(rootViewController: UIViewController) {
+    init?(rootViewController: UIViewController?) {
         self.rootViewController = rootViewController
     }
 
     func webView(webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: () -> Void) {
-        AlertManager().presentAlertOnController(self.rootViewController, title: "Alert", message: message, handler: completionHandler)
+        AlertJS().presentAlertOnController(self.rootViewController, title: "Alert", message: message, handler: completionHandler)
     }
 
     func webView(webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: (Bool) -> Void) {
-        AlertManager().presentConfirmOnController(self.rootViewController, title: "Confirm", message: message, handler: completionHandler)
+        AlertJS().presentConfirmOnController(self.rootViewController, title: "Confirm", message: message, handler: completionHandler)
     }
 
     func webView(webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: (String?) -> Void) {
-        AlertManager
+        AlertJS().presentPromptOnController(self.rootViewController, title: "Prompt", message: prompt, defaultText: defaultText, completionHandler: completionHandler)
     }
 }
 
-struct AlertManager {
+struct AlertJS {
     func presentAlertOnController(parentController: UIViewController, title: String, message: String, handler: () -> ()) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
 
@@ -46,7 +46,7 @@ struct AlertManager {
         parentController.presentViewController(alert, animated: true, completion: nil)
     }
 
-    func presentPromptOnController(parentController: UIViewController, title: String, message: String, defaultText: String, completionHandler: (String?) -> ()) {
+    func presentPromptOnController(parentController: UIViewController, title: String, message: String, defaultText: String?, completionHandler: (String?) -> ()) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addTextFieldWithConfigurationHandler { (textFilter) -> Void in
             textFilter.text = defaultText
