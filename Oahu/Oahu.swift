@@ -6,14 +6,15 @@ public class Oahu: NSObject {
     private(set) var interceptor: Interceptor?
     public weak var oahuDelegate: OahuDelegate?
     private let webViewConfiguration = Configuration()
-    
+    private var delegate: AlertJSDelegate?
+
     public var javaScriptHandlers:[ScriptMessageHandler]? {
         didSet {
             webViewConfiguration.messageHandlers = javaScriptHandlers
         }
     }
 
-    public init(forView view: UIView, allowsBackForwardNavigationGestures: Bool, interceptor: Interceptor? = nil) {
+    public init(forView view: UIView, allowsBackForwardNavigationGestures: Bool, interceptor: Interceptor? = nil, viewController: UIViewController? = nil) {
         wkWebView = WKWebView(frame: view.frame, configuration: webViewConfiguration.config)
 
         self.interceptor = interceptor
@@ -23,6 +24,10 @@ public class Oahu: NSObject {
 
         super.init()
         wkWebView.navigationDelegate = self
+        if let viewController = viewController {
+            self.delegate = AlertJSDelegate(rootViewController: viewController)
+            wkWebView.UIDelegate = self.delegate
+        }
     }
 
     public func loadRequest(url: String) {
