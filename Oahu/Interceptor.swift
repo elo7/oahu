@@ -1,9 +1,9 @@
 import Foundation
 
 @objc public protocol Evaluator {
-    var closure: () -> Void {get}
+    var closure: (urlIntercepted: String) -> Void {get}
     var url: String {get}
-    init(url: String, closure: () -> Void)
+    init(url: String, closure: (urlIntercepted: String) -> Void)
 }
 
 extension Evaluator {
@@ -11,8 +11,8 @@ extension Evaluator {
         return url.containsString(self.url)
     }
 
-    func execute() {
-        closure()
+    func execute(urlIntercepted: String) {
+        closure(urlIntercepted: urlIntercepted)
     }
 }
 
@@ -37,7 +37,7 @@ public class Interceptor: NSObject {
 
     public func executeFirst(url: String) -> Bool {
         if let first = self.evaluators.filter({$0.matchUrl(url)}).first {
-            first.execute()
+            first.execute(url)
             return true
         }
 
