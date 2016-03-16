@@ -14,6 +14,8 @@ public class Oahu: NSObject {
         }
     }
 
+    var refreshControl: UIRefreshControl
+
     public init(forView view: UIView, allowsBackForwardNavigationGestures: Bool, interceptor: Interceptor? = nil, viewController: UIViewController? = nil) {
         wkWebView = WKWebView(frame: CGRectMake(0, 0, view.frame.size.width, view.frame.size.height), configuration: webViewConfiguration.config)
 
@@ -22,6 +24,7 @@ public class Oahu: NSObject {
         wkWebView.allowsBackForwardNavigationGestures = allowsBackForwardNavigationGestures
         view.addSubview(wkWebView)
         view.addAllConstraints(wkWebView)
+        self.refreshControl = UIRefreshControl()
 
         super.init()
         wkWebView.navigationDelegate = self
@@ -29,6 +32,16 @@ public class Oahu: NSObject {
             self.delegate = AlertJSDelegate(rootViewController: viewController)
             wkWebView.UIDelegate = self.delegate
         }
+    }
+
+    public func enablePullToRefresh() {
+        self.refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+        self.wkWebView.scrollView.addSubview(self.refreshControl)
+    }
+
+    public func refresh() {
+        self.wkWebView.reload()
+        self.refreshControl.endRefreshing()
     }
 
     public func loadRequest(url: String) {
