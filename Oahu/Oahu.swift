@@ -7,14 +7,13 @@ public class Oahu: NSObject {
     public weak var oahuDelegate: OahuDelegate?
     private let webViewConfiguration = Configuration()
     private var delegate: AlertJSDelegate?
+    private let refreshControl: UIRefreshControl
 
     public var javaScriptHandlers:[ScriptMessageHandler]? {
         didSet {
             webViewConfiguration.messageHandlers = javaScriptHandlers
         }
     }
-
-    var refreshControl: UIRefreshControl
 
     public init(forView view: UIView, allowsBackForwardNavigationGestures: Bool, interceptor: Interceptor? = nil, viewController: UIViewController? = nil) {
         wkWebView = WKWebView(frame: CGRectMake(0, 0, view.frame.size.width, view.frame.size.height), configuration: webViewConfiguration.config)
