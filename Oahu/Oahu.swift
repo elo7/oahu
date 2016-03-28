@@ -35,7 +35,7 @@ public class Oahu: NSObject {
 
     public var enableZoom: Bool {
         didSet {
-            if enableZoom {
+            if !enableZoom {
                 wkWebView.scrollView.delegate = self
             } else {
                 wkWebView.scrollView.delegate = nil
