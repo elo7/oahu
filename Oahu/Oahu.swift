@@ -27,6 +27,7 @@ public class Oahu: NSObject {
 
         super.init()
         wkWebView.navigationDelegate = self
+        wkWebView.scrollView.delegate = self
         if let viewController = viewController {
             self.delegate = AlertJSDelegate(rootViewController: viewController)
             wkWebView.UIDelegate = self.delegate
@@ -73,7 +74,6 @@ public class Oahu: NSObject {
     }
 }
 
-
 extension UIView {
 
     func addAllConstraints(contentView:UIView){
@@ -89,4 +89,12 @@ extension UIView {
         return NSLayoutConstraint(item:self, attribute:attribute, relatedBy:NSLayoutRelation.Equal, toItem:contentView, attribute:attribute , multiplier:1.0, constant:0)
     }
     
+}
+
+extension Oahu: UIScrollViewDelegate {
+
+    public func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return nil
+    }
+
 }
