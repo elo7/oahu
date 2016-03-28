@@ -24,13 +24,22 @@ public class Oahu: NSObject {
         view.addSubview(wkWebView)
         view.addAllConstraints(wkWebView)
         self.refreshControl = UIRefreshControl()
-
+        self.enableZoom = true
         super.init()
         wkWebView.navigationDelegate = self
-        wkWebView.scrollView.delegate = self
         if let viewController = viewController {
             self.delegate = AlertJSDelegate(rootViewController: viewController)
             wkWebView.UIDelegate = self.delegate
+        }
+    }
+
+    public var enableZoom: Bool {
+        didSet {
+            if enableZoom {
+                wkWebView.scrollView.delegate = self
+            } else {
+                wkWebView.scrollView.delegate = nil
+            }
         }
     }
 
