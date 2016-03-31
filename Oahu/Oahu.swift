@@ -24,12 +24,22 @@ public class Oahu: NSObject {
         view.addSubview(wkWebView)
         view.addAllConstraints(wkWebView)
         self.refreshControl = UIRefreshControl()
-
+        self.enableZoom = true
         super.init()
         wkWebView.navigationDelegate = self
         if let viewController = viewController {
             self.delegate = AlertJSDelegate(rootViewController: viewController)
             wkWebView.UIDelegate = self.delegate
+        }
+    }
+
+    public var enableZoom: Bool {
+        didSet {
+            if enableZoom {
+                wkWebView.scrollView.delegate = nil
+            } else {
+                wkWebView.scrollView.delegate = self
+            }
         }
     }
 
@@ -73,7 +83,6 @@ public class Oahu: NSObject {
     }
 }
 
-
 extension UIView {
 
     func addAllConstraints(contentView:UIView){
@@ -89,4 +98,12 @@ extension UIView {
         return NSLayoutConstraint(item:self, attribute:attribute, relatedBy:NSLayoutRelation.Equal, toItem:contentView, attribute:attribute , multiplier:1.0, constant:0)
     }
     
+}
+
+extension Oahu: UIScrollViewDelegate {
+
+    public func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return nil
+    }
+
 }
