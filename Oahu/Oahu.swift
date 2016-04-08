@@ -53,12 +53,15 @@ public class Oahu: NSObject {
         self.refreshControl.endRefreshing()
     }
 
-    public func loadRequest(url: String) {
+    public func loadRequest(url: String, httpMethod: HTTPMethod? = HTTPMethod.GET) {
         guard let url = NSURL(string: url) else {
             return
         }
 
         let request = NSMutableURLRequest(URL: url)
+        if let httpMethod = httpMethod {
+            request.HTTPMethod = httpMethod.rawValue
+        }
         cookiesIfNeeded(forRequest: request)
 
         wkWebView.loadRequest(request)
