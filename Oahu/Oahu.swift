@@ -44,7 +44,7 @@ public class Oahu: NSObject {
     }
 
     public func enablePullToRefresh() {
-        self.refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: #selector(Oahu.refresh), forControlEvents: UIControlEvents.ValueChanged)
         self.wkWebView.scrollView.addSubview(self.refreshControl)
     }
 
