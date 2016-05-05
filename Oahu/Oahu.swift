@@ -15,6 +15,30 @@ public class Oahu: NSObject {
         }
     }
 
+    var allowsBackForwardNavigationGestures: Bool {
+        get {
+            return self.wkWebView.allowsBackForwardNavigationGestures
+        }
+        set (newValue) {
+            self.wkWebView.allowsBackForwardNavigationGestures = newValue
+        }
+    }
+
+    var backForwardList: WKBackForwardList {
+        get {
+            return self.wkWebView.backForwardList
+        }
+    }
+
+    var allowsLinkPreview: Bool {
+        get {
+            return self.wkWebView.allowsLinkPreview
+        }
+        set (newValue) {
+            self.wkWebView.allowsLinkPreview = newValue
+        }
+    }
+
     public init(forView view: UIView, allowsBackForwardNavigationGestures: Bool, interceptor: Interceptor? = nil, viewController: UIViewController? = nil) {
         wkWebView = WKWebView(frame: CGRectMake(0, 0, view.frame.size.width, view.frame.size.height), configuration: webViewConfiguration.config)
 
@@ -109,4 +133,28 @@ extension Oahu: UIScrollViewDelegate {
         return nil
     }
 
+}
+
+// Mark: - WKWebView methods
+extension Oahu {
+
+    func canGoBack() -> Bool {
+        return self.wkWebView.canGoBack
+    }
+
+    func canGoForward() -> Bool {
+        return self.wkWebView.canGoForward
+    }
+
+    func goBack() {
+        self.wkWebView.goBack()
+    }
+
+    func goForward() {
+        self.wkWebView.goForward()
+    }
+
+    func goToBackForwardListItem(item: WKBackForwardListItem) -> WKNavigation? {
+        return self.wkWebView.goToBackForwardListItem(item)
+    }
 }
