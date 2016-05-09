@@ -3,11 +3,16 @@ import Foundation
 @objc public protocol Evaluator {
     var closure: (urlIntercepted: String) -> Void {get}
     var url: String {get}
-    init(url: String, closure: (urlIntercepted: String) -> Void)
+    var isAbsoluteUrl: Bool {get}
+    init(url: String, isAbsoluteUrl: Bool, closure: (urlIntercepted: String) -> Void)
 }
 
 extension Evaluator {
     func matchUrl(url: String) -> Bool {
+        if self.isAbsoluteUrl {
+            return url == self.url
+        }
+        
         return url.containsString(self.url)
     }
 
