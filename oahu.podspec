@@ -15,9 +15,9 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "Oahu"
-  s.version      = "0.0.1"
-  s.summary      = ""
+  s.name         = "oahu"
+  s.version      = "0.3.2"
+  s.summary      = "Oahu summary"
 
   s.description  = <<-DESC
                    A longer description of oahu in Markdown format.
@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  s.license      = "MIT (example)"
+  s.license      = "MIT"
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
 
@@ -65,7 +65,7 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  # s.platform     = :ios, "5.0"
+  s.platform     = :ios, "9.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
@@ -79,7 +79,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/elo7/oahu.git", :commit => "c5deb6ae11959edc18cb7dc86ee3c7b2f3e6af89" }
+  s.source       = { :git => "https://github.com/elo7/oahu.git", :tag => "0.3.2" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -116,8 +116,9 @@ Pod::Spec.new do |s|
   #  the lib prefix of their name.
   #
 
-  # s.framework  = "SomeFramework"
   # s.frameworks = "SomeFramework", "AnotherFramework"
+  s.frameworks = "UIKit",
+  s.weak_frameworks = "WebKit"
 
   # s.library   = "iconv"
   # s.libraries = "iconv", "xml2"
