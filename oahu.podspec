@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "oahu"
+  s.name         = "Oahu"
   s.version      = "0.3.2"
   s.summary      = "Oahu summary"
 
