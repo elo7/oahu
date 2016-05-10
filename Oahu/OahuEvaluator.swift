@@ -10,4 +10,8 @@ public class OahuEvaluator: NSObject, Evaluator {
         self.url = url
         self.isAbsoluteUrl = isAbsoluteUrl
     }
+
+    public convenience init(url: String, closure: (urlIntercepted: String) -> Void) {
+        self.init(url: url, isAbsoluteUrl: false, closure: closure)
+    }
 }
