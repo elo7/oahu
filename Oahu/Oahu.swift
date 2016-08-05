@@ -108,6 +108,10 @@ public class Oahu: NSObject {
             request.setValue(header, forHTTPHeaderField: "Cookie")
         }
     }
+
+    public func getWebView() -> WKWebView {
+        return self.wkWebView
+    }
 }
 
 extension UIView {
