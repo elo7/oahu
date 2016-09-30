@@ -14,7 +14,7 @@ import WebKit
     optional func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!)
 
     @objc @available(iOS 8.0, *)
-    optional func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: NSError)
+    optional func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error)
 
     @objc @available(iOS 8.0, *)
     optional func webView(_ webView: WKWebView, didCommitNavigation navigation: WKNavigation!)
@@ -23,7 +23,7 @@ import WebKit
     optional func webView(_ webView: WKWebView, didFinishNavigation navigation: WKNavigation!)
 
     @objc @available(iOS 8.0, *)
-    optional func webView(_ webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: NSError)
+    optional func webView(_ webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: Error)
 
     @objc @available(iOS 8.0, *)
     optional func webView(_ webView: WKWebView, didReceiveAuthenticationChallenge challenge: URLAuthenticationChallenge, completionHandler: (URLSession.AuthChallengeDisposition, URLCredential?) -> Void)
