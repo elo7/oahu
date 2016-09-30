@@ -2,29 +2,29 @@ import Foundation
 import WebKit
 
 class CookieHandler: NSObject, WKScriptMessageHandler {
-    func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
 
-        let stringCookies = message.body.componentsSeparatedByString("; ")
+        let stringCookies = (message.body as AnyObject).components(separatedBy: "; ")
 
-        for stringCookie in stringCookies where stringCookie.componentsSeparatedByString("=").count >= 2 {
-            let cookieComponents = stringCookie.componentsSeparatedByString("=")
+        for stringCookie in stringCookies where stringCookie.components(separatedBy: "=").count >= 2 {
+            let cookieComponents = stringCookie.components(separatedBy: "=")
 
-            if let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies {
+            if let cookies = HTTPCookieStorage.shared.cookies {
                 for storedCookie in cookies where storedCookie.name == cookieComponents[0] {
-                    NSHTTPCookieStorage.sharedHTTPCookieStorage().deleteCookie(storedCookie)
+                    HTTPCookieStorage.shared.deleteCookie(storedCookie)
                 }
             }
 
-            guard let host = message.webView?.URL?.host else { return }
+            guard let host = message.webView?.url?.host else { return }
 
-            if let newCookie = NSHTTPCookie(properties:[
-                NSHTTPCookieDomain: host,
-                NSHTTPCookiePath: "/",
-                NSHTTPCookieName: cookieComponents[0],
-                NSHTTPCookieValue: cookieComponents[1],
-                NSHTTPCookieVersion: "0",
-                NSHTTPCookieExpires: String(NSDate().dateByAddingTimeInterval(60*60*24*365))
-                ]) { NSHTTPCookieStorage.sharedHTTPCookieStorage().setCookie(newCookie) }
+            if let newCookie = HTTPCookie(properties:[
+                HTTPCookiePropertyKey.domain: host,
+                HTTPCookiePropertyKey.path: "/",
+                HTTPCookiePropertyKey.name: cookieComponents[0],
+                HTTPCookiePropertyKey.value: cookieComponents[1],
+                HTTPCookiePropertyKey.version: "0",
+                HTTPCookiePropertyKey.expires: String(describing: Date().addingTimeInterval(60*60*24*365))
+                ]) { HTTPCookieStorage.shared.setCookie(newCookie) }
         }
     }
 }

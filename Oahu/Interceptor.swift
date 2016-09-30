@@ -1,46 +1,46 @@
 import Foundation
 
 @objc public protocol Evaluator {
-    var closure: (urlIntercepted: String) -> Void {get}
+    var closure: (_ urlIntercepted: String) -> Void {get}
     var url: String {get}
     var isAbsoluteUrl: Bool {get}
-    init(url: String, isAbsoluteUrl: Bool, closure: (urlIntercepted: String) -> Void)
+    init(url: String, isAbsoluteUrl: Bool, closure: (_ urlIntercepted: String) -> Void)
 }
 
 extension Evaluator {
-    func matchUrl(url: String) -> Bool {
+    func matchUrl(_ url: String) -> Bool {
         if self.isAbsoluteUrl {
             return url == self.url
         }
         
-        return url.containsString(self.url)
+        return url.contains(self.url)
     }
 
-    func execute(urlIntercepted: String) {
-        closure(urlIntercepted: urlIntercepted)
+    func execute(_ urlIntercepted: String) {
+        closure(urlIntercepted)
     }
 }
 
-public class Interceptor: NSObject {
-    private var evaluators: [Evaluator]!
+open class Interceptor: NSObject {
+    fileprivate var evaluators: [Evaluator]!
 
     public init(evaluators: [Evaluator]) {
         self.evaluators = evaluators
     }
 
-    public func add(evaluator evaluator: Evaluator) {
+    open func add(evaluator: Evaluator) {
         self.evaluators.append(evaluator)
     }
 
-    public func removeEvaluatorForUrl(url url: String) {
-        self.evaluators = self.evaluators.filter{!url.containsString($0.url)}
+    open func removeEvaluatorForUrl(url: String) {
+        self.evaluators = self.evaluators.filter{!url.contains($0.url)}
     }
 
     func getEvaluators() -> [Evaluator] {
         return self.evaluators
     }
 
-    public func executeFirst(url: String) -> Bool {
+    open func executeFirst(_ url: String) -> Bool {
         if let first = self.evaluators.filter({$0.matchUrl(url)}).first {
             first.execute(url)
             return true

@@ -1,21 +1,21 @@
 import Foundation
 import WebKit
 
-public class Oahu: NSObject {
-    private var wkWebView: WKWebView!
-    private(set) var interceptor: Interceptor?
-    public weak var oahuDelegate: OahuDelegate?
-    private let webViewConfiguration = Configuration()
-    private var delegate: AlertJSDelegate?
-    private let refreshControl: UIRefreshControl
+open class Oahu: NSObject {
+    fileprivate var wkWebView: WKWebView!
+    fileprivate(set) var interceptor: Interceptor?
+    open weak var oahuDelegate: OahuDelegate?
+    fileprivate let webViewConfiguration = Configuration()
+    fileprivate var delegate: AlertJSDelegate?
+    fileprivate let refreshControl: UIRefreshControl
 
-    public var javaScriptHandlers:[ScriptMessageHandler]? {
+    open var javaScriptHandlers:[ScriptMessageHandler]? {
         didSet {
             webViewConfiguration.messageHandlers = javaScriptHandlers
         }
     }
 
-    public var allowsBackForwardNavigationGestures: Bool {
+    open var allowsBackForwardNavigationGestures: Bool {
         get {
             return self.wkWebView.allowsBackForwardNavigationGestures
         }
@@ -24,13 +24,13 @@ public class Oahu: NSObject {
         }
     }
 
-    public var backForwardList: WKBackForwardList {
+    open var backForwardList: WKBackForwardList {
         get {
             return self.wkWebView.backForwardList
         }
     }
 
-    public var allowsLinkPreview: Bool {
+    open var allowsLinkPreview: Bool {
         get {
             return self.wkWebView.allowsLinkPreview
         }
@@ -40,7 +40,7 @@ public class Oahu: NSObject {
     }
 
     public init(forView view: UIView, allowsBackForwardNavigationGestures: Bool, interceptor: Interceptor? = nil, viewController: UIViewController? = nil) {
-        wkWebView = WKWebView(frame: CGRectMake(0, 0, view.frame.size.width, view.frame.size.height), configuration: webViewConfiguration.config)
+        wkWebView = WKWebView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height), configuration: webViewConfiguration.config)
 
         self.interceptor = interceptor
 
@@ -53,11 +53,11 @@ public class Oahu: NSObject {
         wkWebView.navigationDelegate = self
         if let viewController = viewController {
             self.delegate = AlertJSDelegate(rootViewController: viewController)
-            wkWebView.UIDelegate = self.delegate
+            wkWebView.uiDelegate = self.delegate
         }
     }
 
-    public var enableZoom: Bool {
+    open var enableZoom: Bool {
         didSet {
             if enableZoom {
                 wkWebView.scrollView.delegate = nil
@@ -67,73 +67,73 @@ public class Oahu: NSObject {
         }
     }
 
-    public func enablePullToRefresh() {
-        self.refreshControl.addTarget(self, action: #selector(Oahu.refresh), forControlEvents: UIControlEvents.ValueChanged)
+    open func enablePullToRefresh() {
+        self.refreshControl.addTarget(self, action: #selector(Oahu.refresh), for: UIControlEvents.valueChanged)
         self.wkWebView.scrollView.addSubview(self.refreshControl)
     }
 
-    public func refresh() {
+    open func refresh() {
         self.wkWebView.reload()
         self.refreshControl.endRefreshing()
     }
 
-    public func loadRequest(url: String, httpMethod: HTTPMethod? = HTTPMethod.GET) {
-        guard let url = NSURL(string: url) else {
+    open func loadRequest(_ url: String, httpMethod: HTTPMethod? = HTTPMethod.GET) {
+        guard let url = URL(string: url) else {
             return
         }
 
-        let request = NSMutableURLRequest(URL: url)
+        let request = NSMutableURLRequest(url: url)
         if let httpMethod = httpMethod {
-            request.HTTPMethod = httpMethod.rawValue
+            request.httpMethod = httpMethod.rawValue
         }
         cookiesIfNeeded(forRequest: request)
 
-        wkWebView.loadRequest(request)
+        wkWebView.load(request as URLRequest)
     }
 
-    public func loadHTMLString(htmlString: String) {
+    open func loadHTMLString(_ htmlString: String) {
         wkWebView.loadHTMLString(htmlString, baseURL: nil)
     }
 
     func cookiesIfNeeded(forRequest request: NSMutableURLRequest) {
 
-        guard let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies else { return }
+        guard let cookies = HTTPCookieStorage.shared.cookies else { return }
 
         let header = cookies
-            .filter {!$0.name.containsString("'")}
+            .filter {!$0.name.contains("'")}
             .map {"\($0.name)=\($0.value)"}
-            .joinWithSeparator(";")
+            .joined(separator: ";")
 
         if header != "" {
             request.setValue(header, forHTTPHeaderField: "Cookie")
         }
     }
 
-    public func getWebView() -> WKWebView {
+    open func getWebView() -> WKWebView {
         return self.wkWebView
     }
 }
 
 extension UIView {
 
-    func addAllConstraints(contentView:UIView){
-        let topConstraint = constraint(contentView, attribute:NSLayoutAttribute.Top)
-        let bottomConstraint = constraint(contentView, attribute:NSLayoutAttribute.Bottom)
-        let leadingConstraint = constraint(contentView, attribute:NSLayoutAttribute.Leading)
-        let trailingConstraint = constraint(contentView, attribute:NSLayoutAttribute.Trailing)
+    func addAllConstraints(_ contentView:UIView){
+        let topConstraint = constraint(contentView, attribute:NSLayoutAttribute.top)
+        let bottomConstraint = constraint(contentView, attribute:NSLayoutAttribute.bottom)
+        let leadingConstraint = constraint(contentView, attribute:NSLayoutAttribute.leading)
+        let trailingConstraint = constraint(contentView, attribute:NSLayoutAttribute.trailing)
         contentView.translatesAutoresizingMaskIntoConstraints = false
         addConstraints([topConstraint, bottomConstraint, leadingConstraint, trailingConstraint])
     }
 
-    private func constraint(contentView:UIView, attribute:NSLayoutAttribute) -> NSLayoutConstraint {
-        return NSLayoutConstraint(item:self, attribute:attribute, relatedBy:NSLayoutRelation.Equal, toItem:contentView, attribute:attribute , multiplier:1.0, constant:0)
+    fileprivate func constraint(_ contentView:UIView, attribute:NSLayoutAttribute) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item:self, attribute:attribute, relatedBy:NSLayoutRelation.equal, toItem:contentView, attribute:attribute , multiplier:1.0, constant:0)
     }
     
 }
 
 extension Oahu: UIScrollViewDelegate {
 
-    public func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+    public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return nil
     }
 
@@ -158,7 +158,7 @@ extension Oahu {
         self.wkWebView.goForward()
     }
 
-    public func goToBackForwardListItem(item: WKBackForwardListItem) -> WKNavigation? {
-        return self.wkWebView.goToBackForwardListItem(item)
+    public func goToBackForwardListItem(_ item: WKBackForwardListItem) -> WKNavigation? {
+        return self.wkWebView.go(to: item)
     }
 }
