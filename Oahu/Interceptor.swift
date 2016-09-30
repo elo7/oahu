@@ -4,7 +4,7 @@ import Foundation
     var closure: (_ urlIntercepted: String) -> Void {get}
     var url: String {get}
     var isAbsoluteUrl: Bool {get}
-    init(url: String, isAbsoluteUrl: Bool, closure: (_ urlIntercepted: String) -> Void)
+    init(url: String, isAbsoluteUrl: Bool, closure: @escaping (_ urlIntercepted: String) -> Void)
 }
 
 extension Evaluator {
