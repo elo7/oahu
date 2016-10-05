@@ -9,13 +9,13 @@ class JavaScriptHandler: NSObject, WKScriptMessageHandler  {
         self.messageHandlers = messageHandlers
     }
 
-    func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
 
         guard let messageHandler = messageHandlers.filter({$0.name == message.name}).first else {
             return
         }
 
-        if let param = message.body as? String where param != "" {
+        if let param = message.body as? String , param != "" {
             messageHandler.handler(param)
         } else {
             messageHandler.handler(nil)
