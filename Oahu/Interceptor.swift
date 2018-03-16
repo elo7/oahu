@@ -15,6 +15,8 @@ extension Evaluator {
         
         return url.contains(self.url)
     }
+    
+
 
     func execute(_ urlIntercepted: String) {
         closure(urlIntercepted)
@@ -22,13 +24,13 @@ extension Evaluator {
 }
 
 open class Interceptor: NSObject {
-    fileprivate var evaluators: [Evaluator]!
+    fileprivate var evaluators: [OahuEvaluator]!
 
-    public init(evaluators: [Evaluator]) {
+    public init(evaluators: [OahuEvaluator]) {
         self.evaluators = evaluators
     }
 
-    open func add(evaluator: Evaluator) {
+    open func add(evaluator: OahuEvaluator) {
         self.evaluators.append(evaluator)
     }
 
@@ -36,12 +38,14 @@ open class Interceptor: NSObject {
         self.evaluators = self.evaluators.filter{!url.contains($0.url)}
     }
 
-    func getEvaluators() -> [Evaluator] {
+    func getEvaluators() -> [OahuEvaluator] {
         return self.evaluators
     }
 
     open func executeFirst(_ url: String) -> Bool {
-        if let first = self.evaluators.filter({$0.matchUrl(url)}).first {
+        if let first = self.evaluators.filter({ (oahuEvaluator) -> Bool in
+            return oahuEvaluator.matchUrl(url) && oahuEvaluator.stopLoadingURL(url)
+        }).first {
             first.execute(url)
             return true
         }
