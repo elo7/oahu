@@ -3,7 +3,6 @@ import WebKit
 extension Oahu: WKNavigationDelegate {
 
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-
         if let interceptor = self.interceptor, let url = navigationAction.request.url?.absoluteString {
             if interceptor.executeFirst(url) {
                 decisionHandler(.cancel)
@@ -14,9 +13,8 @@ extension Oahu: WKNavigationDelegate {
         guard let _ = oahuDelegate?.webView?(webView, decidePolicyForNavigationAction: navigationAction, decisionHandler: decisionHandler) else {
             decisionHandler(.allow)
             return
-        }
 
-        oahuDelegate?.webView?(webView, decidePolicyForNavigationAction: navigationAction, decisionHandler: decisionHandler)
+        }
     }
 
     public func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
