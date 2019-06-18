@@ -1,7 +1,7 @@
 import Foundation
 import WebKit
 
-open class Oahu: NSObject {
+@objc open class Oahu: NSObject {
     fileprivate var wkWebView: WKWebView!
     fileprivate(set) var interceptor: Interceptor?
     open weak var oahuDelegate: OahuDelegate?
