@@ -1,7 +1,7 @@
 import Foundation
 import WebKit
 
-open class Oahu: NSObject {
+@objc open class Oahu: NSObject {
     fileprivate var wkWebView: WKWebView!
     fileprivate(set) var interceptor: Interceptor?
     open weak var oahuDelegate: OahuDelegate?
@@ -68,11 +68,11 @@ open class Oahu: NSObject {
     }
 
     open func enablePullToRefresh() {
-        self.refreshControl.addTarget(self, action: #selector(Oahu.refresh), for: UIControlEvents.valueChanged)
+        self.refreshControl.addTarget(self, action: #selector(Oahu.refresh), for: UIControl.Event.valueChanged)
         self.wkWebView.scrollView.addSubview(self.refreshControl)
     }
 
-    open func refresh() {
+    @objc open func refresh() {
         self.wkWebView.reload()
         self.refreshControl.endRefreshing()
     }
@@ -119,16 +119,16 @@ open class Oahu: NSObject {
 extension UIView {
 
     func addAllConstraints(_ contentView:UIView){
-        let topConstraint = constraint(contentView, attribute:NSLayoutAttribute.top)
-        let bottomConstraint = constraint(contentView, attribute:NSLayoutAttribute.bottom)
-        let leadingConstraint = constraint(contentView, attribute:NSLayoutAttribute.leading)
-        let trailingConstraint = constraint(contentView, attribute:NSLayoutAttribute.trailing)
+        let topConstraint = constraint(contentView, attribute:NSLayoutConstraint.Attribute.top)
+        let bottomConstraint = constraint(contentView, attribute:NSLayoutConstraint.Attribute.bottom)
+        let leadingConstraint = constraint(contentView, attribute:NSLayoutConstraint.Attribute.leading)
+        let trailingConstraint = constraint(contentView, attribute:NSLayoutConstraint.Attribute.trailing)
         contentView.translatesAutoresizingMaskIntoConstraints = false
         addConstraints([topConstraint, bottomConstraint, leadingConstraint, trailingConstraint])
     }
 
-    fileprivate func constraint(_ contentView:UIView, attribute:NSLayoutAttribute) -> NSLayoutConstraint {
-        return NSLayoutConstraint(item:self, attribute:attribute, relatedBy:NSLayoutRelation.equal, toItem:contentView, attribute:attribute , multiplier:1.0, constant:0)
+    fileprivate func constraint(_ contentView:UIView, attribute:NSLayoutConstraint.Attribute) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item:self, attribute:attribute, relatedBy:NSLayoutConstraint.Relation.equal, toItem:contentView, attribute:attribute , multiplier:1.0, constant:0)
     }
     
 }

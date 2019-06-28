@@ -1,6 +1,6 @@
 import Foundation
 
-open class OahuEvaluator: NSObject, Evaluator {
+@objc open class OahuEvaluator: NSObject, Evaluator {
 
     open var closure: (_ urlIntercepted: String) -> Void
     open var url: String

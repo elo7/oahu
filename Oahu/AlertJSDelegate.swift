@@ -23,9 +23,9 @@ class AlertJSDelegate: NSObject, WKUIDelegate {
 
 struct AlertJS {
     func presentAlertOnController(_ parentController: UIViewController, title: String, message: String, handler: @escaping () -> ()) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
 
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: { (action) -> Void in
             handler()
         }))
 
@@ -33,13 +33,13 @@ struct AlertJS {
     }
 
     func presentConfirmOnController(_ parentController: UIViewController, title: String, message: String, handler: @escaping (Bool) -> ()) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle:UIAlertController.Style.alert)
 
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) -> Void in
             handler(true)
         }))
 
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: { (action) -> Void in
             handler(false)
         }))
 
@@ -47,18 +47,18 @@ struct AlertJS {
     }
 
     func presentPromptOnController(_ parentController: UIViewController, title: String, message: String, defaultText: String?, completionHandler: @escaping (String?) -> ()) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle:UIAlertController.Style.alert)
         alert.addTextField { (textFilter) -> Void in
             textFilter.text = defaultText
         }
 
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) -> Void in
             if let textFields = alert.textFields {
                 completionHandler(textFields[0].text)
             }
         }))
 
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: { (action) -> Void in
             completionHandler(nil)
         }))
 
