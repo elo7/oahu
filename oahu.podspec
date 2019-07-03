@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "Oahu"
+  s.name         = "oahu"
   s.version      = "0.9.0"
   s.summary      = "Oahu summary"
 
@@ -79,7 +79,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/elo7/oahu.git", :tag => "0.8.0" }
+  s.source       = { :git => "https://github.com/elo7/oahu.git", :tag => s.version }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
