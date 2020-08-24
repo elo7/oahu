@@ -22,8 +22,6 @@ extension Oahu: WKNavigationDelegate {
             decisionHandler(.allow)
             return
         }
-
-        oahuDelegate?.webView?(webView, decidePolicyForNavigationResponse: navigationResponse, decisionHandler: decisionHandler)
     }
 
     public func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
