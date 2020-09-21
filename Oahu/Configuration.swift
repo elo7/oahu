@@ -37,12 +37,25 @@ class Configuration {
 
     var config: WKWebViewConfiguration {
         let webkitWebViewConfiguration = WKWebViewConfiguration()
-        webkitUserContentController.addUserScript(cookieInScript)
-        webkitUserContentController.addUserScript(cookieOutScript)
-        webkitUserContentController.add(cookieHandler, name: "updateCookies")
-
-        webkitWebViewConfiguration.processPool = processPool
-        webkitWebViewConfiguration.userContentController = webkitUserContentController
+		if #available(iOS 11.0, *) {
+			let cookieStore = webkitWebViewConfiguration.websiteDataStore.httpCookieStore
+			
+			if let cookies = HTTPCookieStorage.shared.cookies {
+				for cookie in cookies {
+					cookieStore.setCookie(cookie, completionHandler: nil)
+				}
+			}
+			
+			cookieStore.add(CookieStoreChangeObserver())
+			
+		} else {
+			webkitUserContentController.addUserScript(cookieInScript)
+			webkitUserContentController.addUserScript(cookieOutScript)
+			webkitUserContentController.add(cookieHandler, name: "updateCookies")
+			
+			webkitWebViewConfiguration.processPool = processPool
+			webkitWebViewConfiguration.userContentController = webkitUserContentController
+		}
 
         return webkitWebViewConfiguration
     }

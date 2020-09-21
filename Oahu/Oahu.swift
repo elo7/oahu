@@ -40,6 +40,8 @@ import WebKit
     }
 
     public init(forView view: UIView, allowsBackForwardNavigationGestures: Bool, interceptor: Interceptor? = nil, viewController: UIViewController? = nil) {
+		
+		
         wkWebView = WKWebView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height), configuration: webViewConfiguration.config)
 
         self.interceptor = interceptor
