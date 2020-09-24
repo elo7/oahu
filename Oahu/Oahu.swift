@@ -88,7 +88,6 @@ import WebKit
         if let httpMethod = httpMethod {
             request.httpMethod = httpMethod.rawValue
         }
-        cookiesIfNeeded(forRequest: request)
 
         wkWebView.load(request as URLRequest)
     }
@@ -97,25 +96,9 @@ import WebKit
         wkWebView.loadHTMLString(htmlString, baseURL: nil)
     }
 
-    func cookiesIfNeeded(forRequest request: NSMutableURLRequest) {
-
-        guard let cookies = HTTPCookieStorage.shared.cookies else { return }
-
-        let header = cookies
-            .filter {!$0.name.contains("'")}
-            .map {"\($0.name)=\($0.value)"}
-            .joined(separator: ";")
-
-        if header != "" {
-            request.setValue(header, forHTTPHeaderField: "Cookie")
-        }
-    }
-
     open func getWebView() -> WKWebView {
         return self.wkWebView
     }
-    
-    
 }
 
 extension UIView {
