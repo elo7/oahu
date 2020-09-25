@@ -16,8 +16,6 @@ extension Evaluator {
         return url.contains(self.url)
     }
     
-
-
     func execute(_ urlIntercepted: String) {
         closure(urlIntercepted)
     }
