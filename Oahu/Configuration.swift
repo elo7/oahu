@@ -1,7 +1,7 @@
 import Foundation
 import WebKit
 
-class Configuration: NSObject, WKHTTPCookieStoreObserver {
+class Configuration {
     fileprivate let webkitUserContentController = WKUserContentController()
     fileprivate let cookieHandler = CookieHandler()
     fileprivate let processPool = WKProcessPool()
@@ -39,24 +39,18 @@ class Configuration: NSObject, WKHTTPCookieStoreObserver {
         let webkitWebViewConfiguration = WKWebViewConfiguration()
 		
 		webkitWebViewConfiguration.websiteDataStore = WKWebsiteDataStore.nonPersistent()
-			
+		
 		let cookieStore = webkitWebViewConfiguration.websiteDataStore.httpCookieStore
-			
+
 		if let cookies = HTTPCookieStorage.shared.cookies {
 			for cookie in cookies {
 				cookieStore.setCookie(cookie, completionHandler: nil)
 			}
 		}
 		
-		cookieStore.add(self)
-
 		webkitWebViewConfiguration.processPool = processPool
 		webkitWebViewConfiguration.userContentController = webkitUserContentController
 
         return webkitWebViewConfiguration
     }
-	
-	func cookiesDidChange(in cookieStore: WKHTTPCookieStore) {
-		
-	}
 }
