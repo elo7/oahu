@@ -3,8 +3,8 @@
 *Swift lightweight wrapper for WKWebView to maintain persisted cookies through navigation, intercept requests and handle JavaScript messages*
 
 ## Requirements
-- iOS 8+
-- Xcode 7.1+
+- iOS 11.0+
+- Xcode 9.0+
 
 ## Instalation
 Embedded frameworks require a minimum deployment target of iOS 8 or OS X Mavericks (10.9).
@@ -12,7 +12,7 @@ Embedded frameworks require a minimum deployment target of iOS 8 or OS X Maveric
 
 ### CocoaPods
 ```ruby
-use_frameworks! 
+use_frameworks!
 
 pod 'Oahu', :git => 'git@github.com:elo7/oahu.git'
 ```
