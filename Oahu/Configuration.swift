@@ -37,12 +37,19 @@ class Configuration {
 
     var config: WKWebViewConfiguration {
         let webkitWebViewConfiguration = WKWebViewConfiguration()
-        webkitUserContentController.addUserScript(cookieInScript)
-        webkitUserContentController.addUserScript(cookieOutScript)
-        webkitUserContentController.add(cookieHandler, name: "updateCookies")
+		
+		webkitWebViewConfiguration.websiteDataStore = WKWebsiteDataStore.nonPersistent()
+		
+		let cookieStore = webkitWebViewConfiguration.websiteDataStore.httpCookieStore
 
-        webkitWebViewConfiguration.processPool = processPool
-        webkitWebViewConfiguration.userContentController = webkitUserContentController
+		if let cookies = HTTPCookieStorage.shared.cookies {
+			for cookie in cookies {
+				cookieStore.setCookie(cookie, completionHandler: nil)
+			}
+		}
+		
+		webkitWebViewConfiguration.processPool = processPool
+		webkitWebViewConfiguration.userContentController = webkitUserContentController
 
         return webkitWebViewConfiguration
     }

@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "oahu"
-  s.version      = "0.10.0"
+  s.version      = "0.10.1"
   s.summary      = "Oahu summary"
 
   s.description  = <<-DESC
@@ -65,7 +65,7 @@ Pod::Spec.new do |s|
   #
 
   # s.platform     = :ios
-  s.platform     = :ios, "9.0"
+  s.platform     = :ios, "11.0"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
