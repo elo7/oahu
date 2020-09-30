@@ -112,8 +112,6 @@ import WebKit
     open func getWebView() -> WKWebView {
         return self.wkWebView
     }
-    
-    
 }
 
 extension UIView {
