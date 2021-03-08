@@ -40,9 +40,15 @@ import WebKit
     }
 
     public init(forView view: UIView, allowsBackForwardNavigationGestures: Bool, interceptor: Interceptor? = nil, viewController: UIViewController? = nil) {
+
+		let source: String = "var meta = document.createElement('meta');" + "meta.name = 'viewport';" + "meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';" + "var head = document.getElementsByTagName('head')[0];" + "head.appendChild(meta);";
+		let script: WKUserScript = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+		let userContentController: WKUserContentController = WKUserContentController()
+		let conf = WKWebViewConfiguration()
+		conf.userContentController = userContentController
+		userContentController.addUserScript(script)
 		
-		
-        wkWebView = WKWebView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height), configuration: webViewConfiguration.config)
+		wkWebView = WKWebView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height), configuration: conf)
 
         self.interceptor = interceptor
 
