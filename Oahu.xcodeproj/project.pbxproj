@@ -7,23 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B00B8011C1EFCEB00A9678D /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B00B8001C1EFCEB00A9678D /* Interceptor.swift */; };
-		8B00B8051C1F25E800A9678D /* OahuEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B00B8041C1F25E800A9678D /* OahuEvaluator.swift */; };
-		8B00B8071C1F261800A9678D /* EvaluatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B00B8061C1F261800A9678D /* EvaluatorTests.swift */; };
-		8B11C3931C7CE4D000707F4F /* AlertJSDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B11C3921C7CE4CF00707F4F /* AlertJSDelegate.swift */; };
-		8B2F35E71C233E4200C5BBE2 /* ScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2F35E61C233E4200C5BBE2 /* ScriptMessageHandler.swift */; };
-		8B2F35E91C285A5000C5BBE2 /* CookieHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2F35E81C285A5000C5BBE2 /* CookieHandler.swift */; };
-		8B4CB3641C2072F5005D95A7 /* OahuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4CB3631C2072F5005D95A7 /* OahuDelegate.swift */; };
-		8B4CB3661C207332005D95A7 /* ExtOahu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4CB3651C207332005D95A7 /* ExtOahu.swift */; };
-		8B817FC01CB81BF700EF6688 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B817FBF1CB81BF700EF6688 /* HTTPMethod.swift */; };
-		8B8A7EC01C18BEB2003466D6 /* Oahu.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8A7EBF1C18BEB2003466D6 /* Oahu.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B59DFAF2714AB6400A743CE /* Sources in Resources */ = {isa = PBXBuildFile; fileRef = 8B59DFAE2714AB6400A743CE /* Sources */; };
+		8B59DFB02714AB6400A743CE /* Sources in Resources */ = {isa = PBXBuildFile; fileRef = 8B59DFAE2714AB6400A743CE /* Sources */; };
+		8B59DFB22714AB7200A743CE /* Tests in Resources */ = {isa = PBXBuildFile; fileRef = 8B59DFB12714AB7200A743CE /* Tests */; };
+		8B59DFB32714AB7200A743CE /* Tests in Resources */ = {isa = PBXBuildFile; fileRef = 8B59DFB12714AB7200A743CE /* Tests */; };
 		8B8A7EC71C18BEB2003466D6 /* Oahu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B8A7EBC1C18BEB2003466D6 /* Oahu.framework */; };
-		8B8A7EDB1C18BFDC003466D6 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8A7ED61C18BFDC003466D6 /* Configuration.swift */; };
-		8B8A7EDC1C18BFDC003466D6 /* ExtArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8A7ED71C18BFDC003466D6 /* ExtArray.swift */; };
-		8B8A7EDD1C18BFDC003466D6 /* ExtNSHTTPCookie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8A7ED81C18BFDC003466D6 /* ExtNSHTTPCookie.swift */; };
-		8B8A7EDE1C18BFDC003466D6 /* Oahu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8A7ED91C18BFDC003466D6 /* Oahu.swift */; };
-		8BAA8BAB1C1F2A5400AE0755 /* InterceptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAA8BAA1C1F2A5400AE0755 /* InterceptorTests.swift */; };
-		8BF0B3ED1C2865D5002C348E /* JavaScriptHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF0B3EC1C2865D5002C348E /* JavaScriptHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,26 +25,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8B00B8001C1EFCEB00A9678D /* Interceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interceptor.swift; sourceTree = "<group>"; };
-		8B00B8041C1F25E800A9678D /* OahuEvaluator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OahuEvaluator.swift; sourceTree = "<group>"; };
-		8B00B8061C1F261800A9678D /* EvaluatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvaluatorTests.swift; sourceTree = "<group>"; };
-		8B11C3921C7CE4CF00707F4F /* AlertJSDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertJSDelegate.swift; sourceTree = "<group>"; };
-		8B2F35E61C233E4200C5BBE2 /* ScriptMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptMessageHandler.swift; sourceTree = "<group>"; };
-		8B2F35E81C285A5000C5BBE2 /* CookieHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookieHandler.swift; sourceTree = "<group>"; };
-		8B4CB3631C2072F5005D95A7 /* OahuDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OahuDelegate.swift; sourceTree = "<group>"; };
-		8B4CB3651C207332005D95A7 /* ExtOahu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtOahu.swift; sourceTree = "<group>"; };
-		8B817FBF1CB81BF700EF6688 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		8B59DFAE2714AB6400A743CE /* Sources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sources; sourceTree = "<group>"; };
+		8B59DFB12714AB7200A743CE /* Tests */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Tests; sourceTree = "<group>"; };
 		8B8A7EBC1C18BEB2003466D6 /* Oahu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Oahu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8B8A7EBF1C18BEB2003466D6 /* Oahu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Oahu.h; sourceTree = "<group>"; };
-		8B8A7EC11C18BEB2003466D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B8A7EC61C18BEB2003466D6 /* OahuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OahuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8B8A7ECD1C18BEB2003466D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8B8A7ED61C18BFDC003466D6 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
-		8B8A7ED71C18BFDC003466D6 /* ExtArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtArray.swift; sourceTree = "<group>"; };
-		8B8A7ED81C18BFDC003466D6 /* ExtNSHTTPCookie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtNSHTTPCookie.swift; sourceTree = "<group>"; };
-		8B8A7ED91C18BFDC003466D6 /* Oahu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Oahu.swift; sourceTree = "<group>"; };
-		8BAA8BAA1C1F2A5400AE0755 /* InterceptorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterceptorTests.swift; sourceTree = "<group>"; };
-		8BF0B3EC1C2865D5002C348E /* JavaScriptHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JavaScriptHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +53,8 @@
 		8B8A7EB21C18BEB2003466D6 = {
 			isa = PBXGroup;
 			children = (
-				8B8A7EBE1C18BEB2003466D6 /* Oahu */,
-				8B8A7ECA1C18BEB2003466D6 /* OahuTests */,
+				8B59DFAE2714AB6400A743CE /* Sources */,
+				8B59DFB12714AB7200A743CE /* Tests */,
 				8B8A7EBD1C18BEB2003466D6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -96,46 +68,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8B8A7EBE1C18BEB2003466D6 /* Oahu */ = {
-			isa = PBXGroup;
-			children = (
-				8B8A7EBF1C18BEB2003466D6 /* Oahu.h */,
-				8B8A7EC11C18BEB2003466D6 /* Info.plist */,
-				8B8A7ED61C18BFDC003466D6 /* Configuration.swift */,
-				8B2F35E81C285A5000C5BBE2 /* CookieHandler.swift */,
-				8BF0B3EC1C2865D5002C348E /* JavaScriptHandler.swift */,
-				8B00B8001C1EFCEB00A9678D /* Interceptor.swift */,
-				8B2F35E61C233E4200C5BBE2 /* ScriptMessageHandler.swift */,
-				8B8A7ED91C18BFDC003466D6 /* Oahu.swift */,
-				8B4CB3631C2072F5005D95A7 /* OahuDelegate.swift */,
-				8B00B8041C1F25E800A9678D /* OahuEvaluator.swift */,
-				8B8A7EE01C18BFE2003466D6 /* Extensions */,
-				8B11C3921C7CE4CF00707F4F /* AlertJSDelegate.swift */,
-				8B817FBF1CB81BF700EF6688 /* HTTPMethod.swift */,
-			);
-			path = Oahu;
-			sourceTree = "<group>";
-		};
-		8B8A7ECA1C18BEB2003466D6 /* OahuTests */ = {
-			isa = PBXGroup;
-			children = (
-				8B8A7ECD1C18BEB2003466D6 /* Info.plist */,
-				8B00B8061C1F261800A9678D /* EvaluatorTests.swift */,
-				8BAA8BAA1C1F2A5400AE0755 /* InterceptorTests.swift */,
-			);
-			path = OahuTests;
-			sourceTree = "<group>";
-		};
-		8B8A7EE01C18BFE2003466D6 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				8B8A7ED71C18BFDC003466D6 /* ExtArray.swift */,
-				8B8A7ED81C18BFDC003466D6 /* ExtNSHTTPCookie.swift */,
-				8B4CB3651C207332005D95A7 /* ExtOahu.swift */,
-			);
-			name = Extensions;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -143,7 +75,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B8A7EC01C18BEB2003466D6 /* Oahu.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +161,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B59DFB22714AB7200A743CE /* Tests in Resources */,
+				8B59DFAF2714AB6400A743CE /* Sources in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +170,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B59DFB32714AB7200A743CE /* Tests in Resources */,
+				8B59DFB02714AB6400A743CE /* Sources in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,19 +182,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B2F35E71C233E4200C5BBE2 /* ScriptMessageHandler.swift in Sources */,
-				8BF0B3ED1C2865D5002C348E /* JavaScriptHandler.swift in Sources */,
-				8B00B8011C1EFCEB00A9678D /* Interceptor.swift in Sources */,
-				8B8A7EDB1C18BFDC003466D6 /* Configuration.swift in Sources */,
-				8B8A7EDD1C18BFDC003466D6 /* ExtNSHTTPCookie.swift in Sources */,
-				8B8A7EDE1C18BFDC003466D6 /* Oahu.swift in Sources */,
-				8B4CB3661C207332005D95A7 /* ExtOahu.swift in Sources */,
-				8B4CB3641C2072F5005D95A7 /* OahuDelegate.swift in Sources */,
-				8B11C3931C7CE4D000707F4F /* AlertJSDelegate.swift in Sources */,
-				8B8A7EDC1C18BFDC003466D6 /* ExtArray.swift in Sources */,
-				8B817FC01CB81BF700EF6688 /* HTTPMethod.swift in Sources */,
-				8B2F35E91C285A5000C5BBE2 /* CookieHandler.swift in Sources */,
-				8B00B8051C1F25E800A9678D /* OahuEvaluator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,8 +189,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B00B8071C1F261800A9678D /* EvaluatorTests.swift in Sources */,
-				8BAA8BAB1C1F2A5400AE0755 /* InterceptorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,11 +324,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Oahu/Info.plist;
+				INFOPLIST_FILE = Sources/Oahu/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MARKETING_VERSION = 0.10.2;
+				MARKETING_VERSION = 0.10.3;
 				PRODUCT_BUNDLE_IDENTIFIER = Elo7.Oahu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -428,11 +348,11 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Oahu/Info.plist;
+				INFOPLIST_FILE = Sources/Oahu/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MARKETING_VERSION = 0.10.2;
+				MARKETING_VERSION = 0.10.3;
 				PRODUCT_BUNDLE_IDENTIFIER = Elo7.Oahu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -443,7 +363,7 @@
 		8B8A7ED41C18BEB2003466D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = OahuTests/Info.plist;
+				INFOPLIST_FILE = Tests/OahuTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Elo7.OahuTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -454,7 +374,7 @@
 		8B8A7ED51C18BEB2003466D6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = OahuTests/Info.plist;
+				INFOPLIST_FILE = Tests/OahuTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Elo7.OahuTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
