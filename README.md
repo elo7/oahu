@@ -28,6 +28,12 @@ And add the path to the framework under “Input Files”, e.g.:
 $(SRCROOT)/Carthage/Build/iOS/oahu.framework
 ```
 
+### Swift Package Manager (SPM)
+
+The Swift Package Manager is a tool for automating the distribution of Swift code and is integrated into the swift compiler. To integrate using Apple's Swift package manager from xcode :
+
+File -> Add Packages... -> Enter package URL : https://github.com/elo7/oahu, choose the latest release
+
 ## Getting started
 #### Initialization
 ```swift

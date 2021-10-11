@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "oahu"
-  s.version      = "0.10.2"
+  s.version      = "0.10.3"
   s.summary      = "Oahu summary"
 
   s.description  = <<-DESC
@@ -90,7 +90,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Oahu/**/*.{h,m,swift}"
+  s.source_files  = "Sources/Oahu/**/*.{h,m,swift}"
   # s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
