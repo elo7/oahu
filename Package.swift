@@ -4,21 +4,21 @@
 import PackageDescription
 
 let package = Package(
-    name: "oahu",
+    name: "Oahu",
     platforms: [.iOS(.v11)],
     products: [
         .library(
-            name: "oahu",
-            targets: ["oahu"]),
+            name: "Oahu",
+            targets: ["Oahu"]),
     ],
     dependencies: [],
     targets: [
         .target(
-            name: "oahu",
+            name: "Oahu",
             dependencies: []),
         .testTarget(
-            name: "oahuTests",
-            dependencies: ["oahu"]),
+            name: "OahuTests",
+            dependencies: ["Oahu"]),
     ],
     swiftLanguageVersions: [.v5]
 )
