@@ -29,6 +29,12 @@ import WebKit
             return self.wkWebView.backForwardList
         }
     }
+    
+    open var getWKWebView: WKWebView {
+        get {
+            return self.wkWebView
+        }
+    }
 
     open var allowsLinkPreview: Bool {
         get {
