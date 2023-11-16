@@ -92,8 +92,8 @@ import WebKit
         wkWebView.load(request as URLRequest)
     }
 
-    open func loadHTMLString(_ htmlString: String) {
-        wkWebView.loadHTMLString(htmlString, baseURL: nil)
+    open func loadHTMLString(_ htmlString: String, baseURL: URL? = nil) {
+        wkWebView.loadHTMLString(htmlString, baseURL: baseURL)
     }
 
     open func getWebView() -> WKWebView {
