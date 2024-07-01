@@ -5,23 +5,23 @@ extension Oahu: WKNavigationDelegate {
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         if let interceptor = self.interceptor, let url = navigationAction.request.url?.absoluteString {
             if interceptor.executeFirst(url) {
-                decisionHandler(.cancel)
-                return
+                return decisionHandler(.cancel)
             }
         }
 
         guard let _ = oahuDelegate?.webView?(webView, decidePolicyForNavigationAction: navigationAction, decisionHandler: decisionHandler) else {
-            decisionHandler(.allow)
-            return
-
+            return decisionHandler(.allow)
         }
+        
+        decisionHandler(.allow)
     }
 
     public func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         guard let _ = oahuDelegate?.webView?(webView, decidePolicyForNavigationResponse: navigationResponse, decisionHandler: decisionHandler) else {
-            decisionHandler(.allow)
-            return
+            return decisionHandler(.allow)
         }
+        
+        return decisionHandler(.cancel)
     }
 
     public func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
@@ -50,8 +50,7 @@ extension Oahu: WKNavigationDelegate {
 
     public func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         guard let _ = oahuDelegate?.webView?(webView, didReceiveAuthenticationChallenge: challenge, completionHandler: completionHandler) else {
-            completionHandler(.performDefaultHandling, nil)
-            return
+            return completionHandler(.performDefaultHandling, nil)
         }
 
         oahuDelegate?.webView?(webView, didReceiveAuthenticationChallenge: challenge, completionHandler: completionHandler)
